@@ -2,10 +2,30 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <title>Zafarrancho</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="css/style.css">
+        
+        <title>Zafarrancho - Inicio sesión</title>
     </head>
     <body>
-        <h1>Hundir la flota</h1>
-        <br><hr><br>
+        <header>
+            <h1>Zafarrancho</h1>
+            <h2>Hundir la flota</h2>
+        </header>
+        <main class="contenedor-acceso">
+            <form>
+                <label for="idUsuario" class="oculto-visual">Usuario</label>
+                <input type="text" name="txtUsuario" id="idUsuario" placeholder="Usuario"/>
+
+                <label for="idPassword" class="oculto-visual">Password</label>
+                <input type="password" name="txtPassword" id="idPassword" placeholder="Contraseña"/>
+
+                <button type="submit" name="btnEnviar" id="idEnviar">Zarpar</button>
+            </form>
+        </main>
+        <footer>
+            <p>&copy; 2026 Juego Zafarrancho - DWEC03 TE2 - Mikel Granada</p>
+        </footer>
     </body>
 </html>

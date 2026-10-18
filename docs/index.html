@@ -21,11 +21,17 @@
                 <label for="idPassword" class="oculto-visual">Password</label>
                 <input type="password" name="txtPassword" id="idPassword" placeholder="Contraseña"/>
 
-                <button type="submit" name="btnEnviar" id="idEnviar">Zarpar</button>
+                <!--<button type="submit" name="btnZarpar" id="idZarpar">Zarpar</button>-->
+                <button type="button" name="btnZarpar" id="idZarpar">Zarpar</button>
+                <!--Mensaje de error o de exito cuando se pulse el botón "zarpar"-->
             </form>
         </main>
+        <p id="idMensaje" class="mensaje-error"></p>
         <footer>
             <p>&copy; 2026 Juego Zafarrancho - DWEC03 TE2 - Mikel Granada</p>
         </footer>
+
+        <script type="text/javascript" src="./js/lib/jquery_3.7.1.js"></script>
+        <script type="module" src="./js/login.js"></script>
     </body>
 </html>

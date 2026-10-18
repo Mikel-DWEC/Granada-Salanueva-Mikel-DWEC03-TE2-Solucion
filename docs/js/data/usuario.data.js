@@ -1,7 +1,6 @@
-'use-strict'
+import { Usuario } from "../models/usuario.model.js";
 
-const jsonUsuarios = [   
-   {
+const jsonUsuarios = `[{
       "id":1,
       "nombre" : "Iker",
       "apellido" : "Arana",
@@ -23,6 +22,10 @@ const jsonUsuarios = [
       "usuario":"jolano",
       "contraseña":"9012Ijkl"
    }
-]
+]`;
 
-console.log(jsonUsuarios);
+const jsonParseado = JSON.parse(jsonUsuarios);
+
+export const USUARIOS_BD = jsonParseado.map(element => {
+   return new Usuario(element);
+});

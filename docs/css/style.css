@@ -61,6 +61,20 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-size: 22px;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón por encima (Hover) */
+.contenedor-acceso form button:hover { 
+    background-color: #c8961e; /* Dorado más oscuro y elegante */
+    transform: scale(1.05); /* Crece un 5% simulando que se acerca al jugador */
+    box-shadow: 0 6px 12px rgba(200, 150, 30, 0.4); /* Brillo dorado en armonía */
+}
+
+/* Efecto al hacer clic físico en el botón (Active) */
+.contenedor-acceso form button:active { 
+    transform: scale(0.98); /* Se hunde ligeramente simulando la presión de un botón real */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
 }
 
 /* 6. ESTILO PARRAFO MENSAJE */
@@ -94,4 +108,152 @@ footer {
     color: darkgray;
     font-size: 10px;
     text-align: center;
+}
+
+.contenedor-bienvenida {
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Contenedor principal gris más compacto */
+.descripcion-mision {
+    background-color: slategray;
+    padding: 15px 20px; /* Reducido para ahorrar espacio vertical */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Título de la misión más pequeño */
+.descripcion-mision h3 {
+    color: goldenrod;
+    font-size: 16px; /* Reducido de 22px a 16px */
+    text-transform: uppercase;
+    margin-bottom: 12px; /* Menos espacio abajo */
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+    /*font-weight: 900;*/
+}
+
+/* Primer bloque redondeado: Narrativa compacta */
+.bloque-ambientacion {
+    background-color: #2c3e50;
+    padding: 10px 15px; /* Más estrecho */
+    border-radius: 6px;
+    margin-bottom: 10px; /* Reducida la separación entre bloques */
+    line-height: 1.4;    /* Texto más junto pero legible */
+    font-size: 13px;     /* Letra más pequeña para la literatura */
+    font-style: italic;
+    color: #e0e0e0;
+}
+
+/* Segundo bloque redondeado: Directrices compactas */
+.bloque-reglas {
+    background-color: #2c3e50;
+    padding: 12px 15px; /* Más estrecho */
+    border-radius: 6px;
+    line-height: 1.4;
+    font-size: 13px;     /* Letra general de las reglas a 13px */
+}
+
+/* Subtítulo de las directrices más pequeño */
+.bloque-reglas h4 {
+    color: goldenrod;
+    font-size: 13px;    /* Reducido a 13px */
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+/* Estilos de la lista de reglas con menos margen */
+.bloque-reglas ul {
+    padding-left: 18px;
+}
+
+.bloque-reglas li {
+    margin-bottom: 4px; /* Los puntos de la lista están ahora más juntos */
+}
+
+.bloque-reglas li:last-child {
+    margin-bottom: 0;
+}
+
+/* Contenedor general de los niveles */
+/* 1. MÁS JUNTOS: Reducimos el ancho y el espacio entre las tarjetas */
+.niveles {
+    display: flex;
+    justify-content: center; /* Centramos las tarjetas en el medio */
+    gap: 10px;               /* Espacio muy estrecho entre ellas */
+    margin: 10px auto 5px auto;       /* Margen arriba/abajo y centrado horizontal */
+    max-width: 500px;        /* Limitamos el ancho total del grupo para que no se estiren tanto */
+    width: 100%;
+}
+
+/* Reducimos ligeramente el padding interno para que sean más compactas */
+.opcion-nivel label {
+    display: block;
+    background-color: slategray;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;      /* Más compacto */
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;         /* Letra un pelín más pequeña acorde al diseño */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.opcion-nivel label:hover {
+    background-color: #4a5d6e;
+    transform: translateY(-2px);
+}
+
+.opcion-nivel input[type="radio"]:checked + label {
+    background-color: #2c3e50;
+    border-color: goldenrod;
+    color: goldenrod;
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
+}
+
+.opcion-nivel input[type="radio"] {
+    display: none !important; /* Añadimos !important temporalmente para forzar el ocultado */
+}
+
+
+
+/* 2. RESTAURACIÓN Y EFECTOS DEL BOTÓN ¡FUEGO! */
+#btnFuego {
+    display: block; 
+    margin: 25px auto 0 auto; /* Centrado con un poco de aire arriba */
+    background-color: #DC3545; /* Rojo de alerta de combate */
+    color: white;
+    font-weight: bold;
+    padding: 12px 35px;        /* Tamaño rectangular imponente */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 22px;           /* Letra grande y clara */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.2s ease; /* Para que las animaciones vayan suaves */
+}
+
+/* Efecto al pasar el ratón por encima (Hover) */
+#btnFuego:hover {
+    background-color: #bd2130; /* Un rojo más oscuro de peligro */
+    transform: scale(1.05);    /* Crece un 5% simulando que se acerca al jugador */
+    box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4); /* Brillo rojizo */
+}
+
+/* Efecto al hacer clic físico en el botón (Active) */
+#btnFuego:active {
+    transform: scale(0.98);    /* Se hunde ligeramente simulando la presión de un botón real */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }

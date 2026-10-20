@@ -2,10 +2,68 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Zafarrancho: descripción</title>
+        <link rel="stylesheet" href="../css/style.css" />
+
+        <title>Zafarrancho: bienvenida</title>
     </head>
     <body>
-        
+        <header>
+            <h1>Zafarrancho</h1>
+            <h2>Hundir la flota</h2>
+        </header>
+        <main class="contenedor-bienvenida">
+            
+            <section class="descripcion-mision">
+                <!-- El título vuelve a estar dentro del contenedor principal -->
+                <h4>[TOP-SECRET]: ORDEN DE OPERACIONES: PACIFICO - 1942</h4>
+    
+                <!-- Bloque 1: Contenedor redondeado para la narrativa histórica -->
+                <div class="bloque-ambientacion">
+                    <p>
+                        1942. En algún lugar del Pacífico Norte. La flota enemiga avanza en mitad de la niebla densa y tu destructor se encuentra aislado. Debido a un impacto reciente, el radar de posicionamiento está completamente averiado: estás navegando a ciegas.
+                    </p>
+                </div>
+
+                <!-- Bloque 2: Contenedor redondeado para los peligros, objetivos y reglas -->
+                <div class="bloque-reglas">
+                    <h5>¡Cuidado!</h5>
+                    <ul>
+                        <li>El sonar detecta un submarino enemigo en las inmediaciones; tardará exactamente 30 segundos en fijar tu posición y lanzar sus torpedos.</li>
+                        <li>Los almacenes de munición están bajo mínimos. Dispones de un número limitado de proyectiles para hundir la flota enemiga antes de que ellos te localicen.</li>
+                        <li>Apunta, afina la puntería y dispara. El destino de la tripulación está en tus manos.</li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <form>
+                <section class="niveles">
+                    <div class="opcion-nivel">
+                        <input type="radio" id="idGrumete" name="dificultad" value="grumete">
+                        <label for="idGrumete">Grumete</label>
+                    </div>
+
+                    <div class="opcion-nivel">
+                        <input type="radio" id="idCapitan" name="dificultad" value="capitan">
+                        <label for="idCapitan">Capitán</label>
+                    </div>
+    
+                    <div class="opcion-nivel">
+                        <input type="radio" id="idAlmirante" name="dificultad" value="almirante">
+                        <label for="idAlmirante">Almirante</label>
+                    </div>
+                </section>
+
+                <button type="button" name="btnFuego" id="btnFuego" >¡FUEGO!</button>
+            </form>
+        </main>
+        <footer>
+            <p>&copy; 2026 Juego Zafarrancho - DWEC03 TE2 - Mikel Granada</p>
+        </footer>
+
+        <script type="text/javascript" src="../js/lib/jquery_3.7.1.js"></script>
+        <script type="module" src="../js/bienvenida.js"></script>
     </body>
 </html>

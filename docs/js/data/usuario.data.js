@@ -29,6 +29,14 @@ const jsonUsuarios = `[{
       "apellido" : "Granada",
       "usuario":"agranada",
       "contraseña":"1234"
+   },
+   
+   {
+      "id":5,
+      "nombre" : "Mireia",
+      "apellido" : "Granada",
+      "usuario":"mgranada",
+      "contraseña":"1234"
    }
 ]`;
 

@@ -1,4 +1,5 @@
 import { USUARIOS_BD } from "../data/usuario.data.js";
+import { Usuario } from "../models/usuario.model.js";
 
 export const procesos = {
     almacenarUsuarios,
@@ -16,18 +17,19 @@ function almacenarUsuarios(){
 
 function buscarUsuario(usuarioBuscado, passwordBuscado) {
 
-    let encontrado = false;
+    // let encontrado = false;
     let i = 0;
-    while (!encontrado && i < USUARIOS_BD.length) {
+    while (i < USUARIOS_BD.length) {
         
         let usuario = USUARIOS_BD[i].usuario;
         let password = USUARIOS_BD[i].contraseña;
         if (usuario === usuarioBuscado.trim() && password === passwordBuscado.trim()) {
-            encontrado = true;
+            return new Usuario(USUARIOS_BD[i]);
         }
         i++;
     }
 
-    return encontrado;
+    return false;
 
 }
+

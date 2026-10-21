@@ -128,7 +128,7 @@ footer {
 }
 
 /* Título de la misión más pequeño */
-.descripcion-mision h3 {
+.descripcion-mision h4 {
     color: goldenrod;
     font-size: 16px; /* Reducido de 22px a 16px */
     text-transform: uppercase;
@@ -161,7 +161,7 @@ footer {
 }
 
 /* Subtítulo de las directrices más pequeño */
-.bloque-reglas h4 {
+.bloque-reglas h5 {
     color: goldenrod;
     font-size: 13px;    /* Reducido a 13px */
     margin-bottom: 6px;

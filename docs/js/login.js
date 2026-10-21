@@ -2,6 +2,7 @@
 
 import { procesos } from "./services/usuario.service.js";
 localStorage.clear();
+sessionStorage.clear();
 
 $(document).ready(function(){
     console.log("JQuery cargado correctamente");
@@ -22,9 +23,11 @@ $(document).ready(function(){
             formatoPassword(txtPassword, txtMensaje)
             return;
         }
-        if (procesos.buscarUsuario(txtUsuario.val(), txtPassword.val())) {
 
-            accesoCorrecto(txtUsuario, txtPassword, txtMensaje);
+        let usuarioLogeado = procesos.buscarUsuario(txtUsuario.val(), txtPassword.val());
+        if (usuarioLogeado) {
+
+            accesoCorrecto(txtUsuario, txtPassword, txtMensaje, usuarioLogeado);
 
         } else {
 
@@ -43,7 +46,7 @@ $(document).ready(function(){
 
 });
 
-function accesoCorrecto(usuario, password, mensaje) {
+function accesoCorrecto(usuario, password, mensaje, usuarioLogeado) {
     
     usuario.css({
         "border-color": "green",
@@ -58,6 +61,11 @@ function accesoCorrecto(usuario, password, mensaje) {
 
     // Temporizador de 2 segundos para ver el acceso correcto antes de redirigir
     setTimeout(function() {
+        // Guardo los datos de usuario en sessionStorage
+        let idUsuarioLogeado = usuarioLogeado.id;
+        let usuarioJSON = JSON.stringify(usuarioLogeado);
+        sessionStorage.setItem(idUsuarioLogeado, usuarioJSON);
+        sessionStorage.setItem("idActual", idUsuarioLogeado);
         // Redirigir a al página de bienvenida
         window.location.href = "./pages/bienvenida.html";
 

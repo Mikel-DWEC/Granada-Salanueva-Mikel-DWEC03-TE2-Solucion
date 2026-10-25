@@ -79,30 +79,42 @@ body {
 
 /* 6. ESTILO PARRAFO MENSAJE */
 
+/* 6. ESTILO PARRAFO MENSAJE (UNIFICADO, COMPACTO Y OCULTO POR DEFECTO) */
 .mensaje-error {
     margin-top: 10px;
     min-height: 30px;
-    border-color: "red"; /*#DC3545*/
+    border-color: red; /*#DC3545*/
     font-size: 18px;
 }
 
+
+
 /* 7. ESTILO HEADER Y FOOTER */
 header {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace; /* Tipografía estilo radar */
     margin-top: 50px;
     text-align: center;
 }
+
+/* Forzamos la tipografía en el título principal */
 header h1 {
+    font-family: 'Courier New', Courier, monospace; 
     font-size: 48px;
     text-transform: uppercase;
     color: goldenrod;
+    letter-spacing: 3px; /* Añade un pequeño espacio entre letras tipo pantalla militar */
 }
+
+/* Forzamos la tipografía en el subtítulo */
 header h2 {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
-    color:lightgray;
-    font-weight: 300px; 
+    color: lightgray;
+    font-weight: 300; 
     margin-top: 5px;
+    text-transform: uppercase; /* Lo ponemos en mayúsculas para darle más seriedad táctica */
 }
+
 footer {
     margin-bottom: 20px;
     color: darkgray;
@@ -257,3 +269,92 @@ footer {
     transform: scale(0.98);    /* Se hunde ligeramente simulando la presión de un botón real */
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+
+
+/* ESTILOS juego.html */
+
+.contenedor-juego {
+    display: flex;
+    flex-direction: row;     /* Coloca los marcadores y el tablero de lado */
+    align-items: center;     /* Alinea verticalmente los elementos al centro */
+    justify-content: center; /* Centra todo el conjunto en la pantalla */
+    gap: 40px;               /* Deja una separación holgada entre el panel izquierdo y el tablero */
+    width: 100%;
+    max-width: 900px;        /* Espacio suficiente para albergar todo cómodamente */
+    margin: 20px auto;
+}
+
+#idpanelControl {
+    display: flex;
+    flex-direction: column;  /* Apilado vertical (uno encima de otro) */
+    gap: 20px;               /* Separación entre el Sonar y el Armamento */
+}
+
+#idcronometro, #idMunicion {
+    background-color: #0d1b2a;    /* Azul marino casi negro, fondo de pantalla de radar */
+    border: 2px solid #415a77;    /* Borde metálico */
+    border-radius: 8px;           /* Cuadrado con bordes redondeados */
+    padding: 15px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1); /* Ligero brillo interno */
+}
+
+/* El título pequeño táctico de arriba */
+.titulo-mando {
+    font-size: 11px;
+    color: goldenrod;             /* Color oro militar para las alertas */
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* El contador principal */
+#idTiempo, #idProyectiles {
+    font-size: 18px;
+    color: #e0e1dd;               /* Blanco roto claro */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px 0;
+}
+
+/* La frase ambiental de abajo */
+.subtexto-mando {
+    font-size: 10px;
+    color: #778da9;               /* Azul grisáceo atenuado */
+    font-style: italic;
+}
+
+#idResultado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 680px;               /* Ajustado dinámicamente al nuevo ancho del conjunto */
+    min-height: 65px;           /* Reducido de 80px a 65px para ahorrar espacio vertical */
+    margin: 5px auto 10px auto; /* Márgenes mínimos para pegar el footer a la pantalla */
+    padding: 10px 20px;         
+    border-radius: 8px;         
+    border: 2px solid #415a77;  
+    background-color: #0d1b2a;  
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace; 
+    font-weight: bold;
+    text-transform: uppercase;  
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;  
+}
+
+/* El texto interior del mensaje mantiene su tamaño masivo */
+#idMensajeResultado {
+    font-size: 26px;            
+    letter-spacing: 2px;        
+    margin: 0;
+    color: #778da9;             
+    white-space: nowrap;        /* Evita que el texto salte de línea si la pantalla se estrecha */
+}
+
+
+
+

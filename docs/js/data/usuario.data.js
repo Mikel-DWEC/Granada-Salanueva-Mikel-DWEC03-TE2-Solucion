@@ -1,3 +1,5 @@
+'use-strict'
+
 import { Usuario } from "../models/usuario.model.js";
 
 const jsonUsuarios = `[{

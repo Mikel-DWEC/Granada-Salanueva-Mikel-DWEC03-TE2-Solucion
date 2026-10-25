@@ -63,22 +63,19 @@ $(document).ready(function(){
             // Aplicamos estilo HOVER al botón
             botonCasilla.hover(
                 function() {
-                    // SOLAMENTE cambia de color si el botón NO está deshabilitado
-                    if (!$(this).prop("disabled")) {
+                        // Al entrar
                         $(this).css({
-                            "background-color": "#5c7f99", // Al entrar
+                            "background-color": "#5c7f99",
                             "transform": "scale(1.05)"
                         });
-                    }
+                    
                 },
                 function() {
-                    // SOLAMENTE vuelve al color base si el botón NO está deshabilitado
-                    if (!$(this).prop("disabled")) {
+                        // Al salir
                         $(this).css({
-                            "background-color": "#415a77", // Al salir
+                            "background-color": "#415a77",
                             "transform": "scale(1)"
                         });
-                    }
                 }
             );
 
@@ -147,8 +144,6 @@ $(document).ready(function(){
                 $("#idResultado").css({ "background-color": "rgba(217, 4, 41, 0.15)", "border-color": "#d90429" });
                 $("#idMensajeResultado").css("color", "#ef233c").text(`¡HUNDIDO! ${casilla.nombre}`);
 
-
-
             } // todavía no está hundido
 
             // Comprobamos si el jugador ha ganado la partida o no
@@ -156,13 +151,14 @@ $(document).ready(function(){
                 // Paramos la cuenta atrás porque el jugador ha ganado la partida
                 clearInterval(cuentaAtras);
                 $("#idTableroJuego").off("click", "button");
-                partidaActual.resultado = "victoria";
+                partidaActual.resultado = "Misión cumplida";
 
                 // Le indicamos el mensaje de victoria
                 $("#idResultado").css({ "background-color": "rgba(40, 167, 69, 0.15)", "border-color": "green" });
                 $("#idMensajeResultado").css("color", "green").text("¡Misión cumplida!");
 
-                return;
+                verResultados();
+                
             } // Todavía no está la toda la flota hundida
 
         } else {
@@ -188,6 +184,7 @@ $(document).ready(function(){
         if (partidaActual.proyectilesRestantes <= 0) {
             // Paramos la cuenta atrás porque el jugador a perdido la partida por falta de munición
             clearInterval(cuentaAtras);
+            partidaActual.resultado = "Retirada"
         
             // Bloqueamos las casillas del tablero
             $("#idTableroJuego").off("click", "button");
@@ -197,6 +194,7 @@ $(document).ready(function(){
             $("#idResultado").css({ "background-color": "rgba(220, 53, 69, 0.2)", "border-color": "#dc3545" });
             $("#idMensajeResultado").css("color", "#ff4d4d").text("Sin munición. Prepara la retirada");
 
+            verResultados();
         }
     
     });
@@ -221,6 +219,7 @@ $(document).ready(function(){
         // Fin del tiempo
         if (partidaActual.tiempoRestante <= 0) {
             clearInterval(cuentaAtras);
+            partidaActual.resultado = "Has perdido el buque"
         
             // Bloqueamos el tablero de juego
             $("#idTableroJuego").off("click", "button");
@@ -230,8 +229,45 @@ $(document).ready(function(){
             $("#idResultado").css({ "background-color": "rgba(220, 53, 69, 0.2)", "border-color": "#dc3545" });
             $("#idMensajeResultado").css("color", "#ff4d4d").text("¡IMPACTO! ¡Sálvese quien pueda!");
 
+            verResultados();
+
         }
 
     }, 1000);
 
+    function verResultados() {
+
+        // Temporizador de 2 segundos para ver el acceso correcto antes de redirigir
+        setTimeout(function() {
+            // Guardar el resultado de la partida
+
+            let resultado = partidaActual.resultado;
+            let tiempoRestante = partidaActual.tiempoRestante;
+            let barcosHundidos = [];
+            for (let i = 0; i < partidaActual.barcos.length; i++) {
+                if (partidaActual.barcos[i].hundido === true){
+                    let nombre = partidaActual.barcos[i].nombre
+                    barcosHundidos.push(nombre);
+                }
+            }
+
+            let resultadoPartida = {
+                "resultado": resultado,
+                "tiempoRestante": tiempoRestante,
+                "barcosHundidos": barcosHundidos
+            }
+/*            
+            for (let i = 0; i < barcosHundidos.length; i++){
+                console.log(barcosHundidos[i])
+            }
+*/           
+            sessionStorage.setItem("resultado", JSON.stringify(resultadoPartida));
+            window.location.href = "../pages/resultados.html";
+
+        }, 2000);
+
+    }
+
 });
+
+

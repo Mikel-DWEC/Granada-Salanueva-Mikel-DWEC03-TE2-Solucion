@@ -1,6 +1,7 @@
 'use-strict'
 
 import { procesos } from "./services/usuario.service.js";
+
 localStorage.clear();
 sessionStorage.clear();
 
@@ -13,8 +14,10 @@ $(document).ready(function(){
     var txtPassword = $("#idPassword");
     var txtMensaje = $("#idMensaje");
 
-    var btnZarpar = $("#idZarpar");
-    btnZarpar.click(function(){
+    var formulario = $("#idFormulario");
+    formulario.submit(function(e){
+
+        e.preventDefault();
 
         // Expresion regular que debe cumplir la contraseña (solo valores alfanumericos)
         let expresionRegular = /^[a-zA-Z0-9]+$/;

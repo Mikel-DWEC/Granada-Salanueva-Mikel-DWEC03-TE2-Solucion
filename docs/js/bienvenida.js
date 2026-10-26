@@ -1,4 +1,5 @@
 'use-strict'
+
 import { Nivel } from "../js/models/nivel.model.js";
 import { NIVELES_BD } from "../js/data/juego.data.js";
 
@@ -7,8 +8,9 @@ $(document).ready(function(){
     var btnFuego = $("#btnFuego");
     var radiosDificultad = $("input[name='dificultad']");
     var txtMensaje = $("#idMensaje");
+
     btnFuego.click(function() {
-        
+
         // compruebo que haya un nivel seleccionado. En caso contrario muestro error y salgo de la función
         let txtNivel = $("input[name='dificultad']:checked").val();
         if (!txtNivel) {
@@ -26,7 +28,6 @@ $(document).ready(function(){
 
     radiosDificultad.change(function() {
         txtMensaje.text("");
-    })
+    });
     
-
 });

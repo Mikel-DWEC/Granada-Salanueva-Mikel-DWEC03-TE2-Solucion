@@ -62,6 +62,13 @@ $(document).ready(function() {
 
         // TIEMPO RESTANTE DE LA PARTIDA ---
         let parrafoTiempoRestante = $("<p></p>").text(` - TIEMPO ANTES DEL IMPACTO: ${resultado.tiempoRestante}s`);
+        if (resultado.tiempoRestante <= 0) {
+            parrafoTiempoRestante.text(` ⏱️ TIEMPO ANTES DEL IMPACTO: torpedo impactado`);
+        } else {
+            parrafoTiempoRestante.text(` ⏱️ TIEMPO ANTES DEL IMPACTO: ${resultado.tiempoRestante}s`);
+        }
+
+
         parrafoTiempoRestante.css({
             "font-family": "'Courier New', Courier, monospace",
             "font-size": "15px",
@@ -73,7 +80,7 @@ $(document).ready(function() {
 
         // --- LISTA BARCOS HUNDIDOS
         // Configuración del titulo y el estilo
-        let tituloLista = $("<h4></h4>").text(" - BAJAS ENEMIGAS CONFIRMADAS:");
+        let tituloLista = $("<h4></h4>").text(" 📋 BAJAS ENEMIGAS CONFIRMADAS:");
         tituloLista.css({
             "font-family": "'Courier New', Courier, monospace",
             "font-size": "15px",
@@ -105,7 +112,7 @@ $(document).ready(function() {
         if (resultado.barcosHundidos && resultado.barcosHundidos.length > 0) {
             for (let i = 0; i < resultado.barcosHundidos.length; i++) {
                 
-                let itemBarco = $("<li></li>").text(` - DESTRUIDO: ${resultado.barcosHundidos[i]}`);
+                let itemBarco = $("<li></li>").text(` 💥 DESTRUIDO: ${resultado.barcosHundidos[i]}`);
                 
                 itemBarco.css({
                     "font-family": "'Courier New', Courier, monospace",
@@ -119,7 +126,7 @@ $(document).ready(function() {
             }
         } else {
             // No hay ningún barco hundido en la lista
-            let itemVacio = $("<li></li>").text(" ** NINGUNA BAJA CONFIRMADA EN EL SECTOR **");
+            let itemVacio = $("<li></li>").text(" ⚠️ NINGUNA BAJA CONFIRMADA EN EL SECTOR ");
             itemVacio.css({
                 "font-family": "'Courier New', Courier, monospace",
                 "font-size": "14px",
@@ -136,8 +143,7 @@ $(document).ready(function() {
         seccionResultados.append(contenedorLista);
 
     }
-
-
+    
     //Dirigir a una nueva partida
     var btnNuevaPartida = $("#btnOtraPartida");
     btnNuevaPartida.click(function(){

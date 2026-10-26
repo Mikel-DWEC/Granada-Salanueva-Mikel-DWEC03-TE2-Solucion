@@ -60,7 +60,7 @@ $(document).ready(function(){
             // Aplicamos el estilo al botón 
             botonCasilla.css(estilosCasilla);
         
-            // Aplicamos estilo HOVER al botón
+            // --- 1 EVENTO: efecto del ratón al pasar por encima de las casillas ---
             botonCasilla.hover(
                 function() {
                         // Al entrar
@@ -84,7 +84,7 @@ $(document).ready(function(){
         }
     }
 
-    // --- EVENTO DE CLIC DE CADA BOTON DEL TABLERO DE JUEGO ---
+    // --- 2º EVENTO: click en cada botón del tablero de juego para disparar ---
 
     $("#idTableroJuego").on("click", "button", function() {
     
@@ -112,6 +112,11 @@ $(document).ready(function(){
             // Indicamos por pantalla el resultado del lanzamiento
             $("#idResultado").css({ "background-color": "rgba(217, 4, 41, 0.15)", "border-color": "#d90429" });
             $("#idMensajeResultado").css("color", "#ef233c").text("¡TOCADO!");
+
+            // Si hay una banderita en la casilla, la quitamos
+            if (botonPulsado.text() === "🚩") {
+                botonPulsado.text("");
+            }
             
             // Añadimos un impacto recibido al contador individual del objeto Barco
             casilla.impactosRecibidos++;
@@ -121,7 +126,7 @@ $(document).ready(function(){
                 // Barco hundido
                 casilla.hundido = true;
 
-                // Buscamos el barco en el tablero y lo marcamos con X's
+                // Buscamos el barco en el tablero y lo marcamos con 💥
                 for (let i = 0; i < partidaActual.tableroJuego.length; i++){
                     for (let j = 0; j < partidaActual.tableroJuego.length; j++){
                         
@@ -129,13 +134,13 @@ $(document).ready(function(){
                         // Si coincide que hay barco en la celda y ademas es el mismo nombre, actualizamos el estilo del botón
                         if (celdaTableroJuego instanceof Barco && celdaTableroJuego.nombre === casilla.nombre) {
                             $(`button[data-fila='${i}'][data-columna='${j}']`)
-                                .text("X")
+                                .text("💥")
                                 .css({
-                                "font-family": "'Courier New', Courier, monospace",
-                                "font-size": "22px",
-                                "font-weight": "bold",
-                                "color": "#ffffff"
-                            });
+                                    "font-family": "'Courier New', Courier, monospace",
+                                    "font-size": "22px",
+                                    "font-weight": "bold",
+                                    "color": "#ffffff"
+                                });
                         }
 
                     }
@@ -172,8 +177,12 @@ $(document).ready(function(){
             // Indicamos por pantalla el resultado del lanzamiento
             $("#idResultado").css({ "background-color": "rgba(78, 168, 222, 0.15)", "border-color": "#4ea8de" });
             $("#idMensajeResultado").css("color", "#4ea8de").text("¡AGUA...Disparo fallido!");
-
-        }
+            
+            // Si hay una banderita en la casilla, la quitamos
+            if (botonPulsado.text() === "🚩") {
+                botonPulsado.text("");
+            }
+        } 
 
         // Desactivamos el botón para que no se pueda volver a pulsar
         botonPulsado.prop("disabled", true);
@@ -197,6 +206,26 @@ $(document).ready(function(){
             verResultados();
         }
     
+    });
+
+    // --- 3 EVENTO: click derecho en cada botón del tablero de juego para marcar la casilla ---
+    $("#idTableroJuego").on("contextmenu", "button", function(e) {
+        // Evitamos que se abra el menú desplegable del navegador
+        e.preventDefault(); 
+    
+        let botonPulsado = $(this);
+
+        // Si el botón ya está deshabilitado por un disparo previo, no hacemos nada
+        if (botonPulsado.prop("disabled")) {
+            return;
+        }
+
+        // Alternamos una clase visual o un estilo para poner/quitar la bandera
+        if (botonPulsado.text() === "🚩") {
+            botonPulsado.text("").css("background-color", "#415a77");
+        } else {
+            botonPulsado.text("🚩").css("background-color", "#e0a96d");
+        }
     });
 
     // Indicamos por pantalla el tiempo incial y los proyectiles iniciales
@@ -256,11 +285,7 @@ $(document).ready(function(){
                 "tiempoRestante": tiempoRestante,
                 "barcosHundidos": barcosHundidos
             }
-/*            
-            for (let i = 0; i < barcosHundidos.length; i++){
-                console.log(barcosHundidos[i])
-            }
-*/           
+                       
             sessionStorage.setItem("resultado", JSON.stringify(resultadoPartida));
             window.location.href = "../pages/resultados.html";
 

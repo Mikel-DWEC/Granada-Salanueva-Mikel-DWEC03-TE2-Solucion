@@ -6,6 +6,7 @@ export class Nivel {
 
     constructor (elemento) {
 
+        this.idNivel = elemento.id;
         this.nombre = elemento.nombre;
         this.tablero = elemento.tablero;
         this.proyectiles = elemento.proyectiles;
@@ -18,7 +19,7 @@ export class Nivel {
             let elementoBarco = elemento.barcos[i];
 
             // Instancio la variable objetoBarco con un objeto de la clase Barco
-            let objetoBarco = new Barco(elementoBarco.nombre, elementoBarco.longitud);
+            let objetoBarco = new Barco(elementoBarco.id, elementoBarco.nombre, elementoBarco.longitud);
             
             // Guardo el valor del objetoBarco en el atributo barcos de la clase Nivel
             this.barcos.push(objetoBarco);

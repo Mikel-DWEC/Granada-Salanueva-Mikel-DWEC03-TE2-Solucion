@@ -148,9 +148,24 @@ $(document).ready(function(){
                 // Actualizamos el mensaje de 'tocado' a hundido más el nombre del barco
                 $("#idResultado").css({ "background-color": "rgba(217, 4, 41, 0.15)", "border-color": "#d90429" });
                 $("#idMensajeResultado").css("color", "#ef233c").text(`¡HUNDIDO! ${casilla.nombre}`);
+                
+                // Comprobamos si el jugador ha ganado la partida o no
+                if (partidaActual.flotaHundida()) {
+                    // Paramos la cuenta atrás porque el jugador ha ganado la partida
+                    clearInterval(cuentaAtras);
+                    $("#idTableroJuego").off("click", "button");
+                    partidaActual.resultado = "Misión cumplida";
+
+                    // Le indicamos el mensaje de victoria
+                    $("#idResultado").css({ "background-color": "rgba(40, 167, 69, 0.15)", "border-color": "green" });
+                    $("#idMensajeResultado").css("color", "green").text("¡Misión cumplida!");
+
+                    verResultados();
+
+                } // Todavía no está toda la flota hundida
 
             } // todavía no está hundido
-
+/*
             // Comprobamos si el jugador ha ganado la partida o no
             if (partidaActual.flotaHundida()) {
                 // Paramos la cuenta atrás porque el jugador ha ganado la partida
@@ -163,8 +178,8 @@ $(document).ready(function(){
                 $("#idMensajeResultado").css("color", "green").text("¡Misión cumplida!");
 
                 verResultados();
-                
-            } // Todavía no está la toda la flota hundida
+*/                
+//            } // Todavía no está la toda la flota hundida
 
         } else {
             // ¡AGUA! La casilla no contiene un objeto de la clase barco
@@ -220,7 +235,7 @@ $(document).ready(function(){
             return;
         }
 
-        // Alternamos una clase visual o un estilo para poner/quitar la bandera
+        // Alternamos la banderita según esté activada o no
         if (botonPulsado.text() === "🚩") {
             botonPulsado.text("").css("background-color", "#415a77");
         } else {
@@ -285,7 +300,7 @@ $(document).ready(function(){
                 "tiempoRestante": tiempoRestante,
                 "barcosHundidos": barcosHundidos
             }
-                       
+            
             sessionStorage.setItem("resultado", JSON.stringify(resultadoPartida));
             window.location.href = "../pages/resultados.html";
 

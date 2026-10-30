@@ -2,8 +2,9 @@
 
 export class Barco {
 
-    constructor(nombre, longitud) {
+    constructor(idBarco, nombre, longitud) {
 
+        this.idBarco = idBarco;
         this.nombre = nombre;
         this.longitud = longitud;
         this.hundido = false;

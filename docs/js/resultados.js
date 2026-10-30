@@ -67,8 +67,7 @@ $(document).ready(function() {
         } else {
             parrafoTiempoRestante.text(` ⏱️ TIEMPO ANTES DEL IMPACTO: ${resultado.tiempoRestante}s`);
         }
-
-
+        
         parrafoTiempoRestante.css({
             "font-family": "'Courier New', Courier, monospace",
             "font-size": "15px",

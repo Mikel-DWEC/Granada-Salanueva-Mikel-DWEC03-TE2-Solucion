@@ -1,8 +1,5 @@
 'use-strict'
 
-import { Nivel } from "../js/models/nivel.model.js";
-import { NIVELES_BD } from "../js/data/juego.data.js";
-
 $(document).ready(function(){
 
     var btnFuego = $("#btnFuego");
